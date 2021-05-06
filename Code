@@ -1,0 +1,201 @@
+Questions from practicepython.org -->
+
+1.Character Input.
+	[ Create a program that asks the user to enter their name and their age. 
+		Print out a message addressed to them that tells them the year that they will turn 100 years old.]
+
+sol:
+Name,Age=input("Enter Your Name and Age :").split()
+new=(100-int(Age))+2021
+print("Hi {} ,You will turn hundred on {} ".format(Name,new))
+
+2.Odd or Even
+	[ Ask the user for a number. 
+		Depending on whether the number is even or odd, print out an appropriate message to the user]
+sol:
+n=int(input("Enter a number to check if it is odd or even :"))
+if n>0:
+    if n%2==0:
+        print("{} is a positive even number .".format(n))
+    else:
+        print("{} is a positive odd number .".format(n))
+elif n<0:
+    x=n
+    n=-(n)
+    if n%2==0:
+        print("{} is a negative even number .".format(x))
+    else:
+        print("{} is a negative odd number .".format(x))
+elif n==0:
+    print("invalid input ! enter a number other than zero.")
+   
+3.List Less Than Ten
+	[Take a list, say for example this one:
+  		a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+			and write a program that prints out all the elements of the list that are less than 5.]
+sol:
+a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+new=[]
+for num in a:
+    if num<=5:
+        if num not in new:
+            new.append(num)
+print(new)
+
+4.Divisors
+  	Enter a number from user and print its divisors.
+sol:
+n=int(input("enter a number to check its divisors:"))
+new=[]
+for i in range(1,n+1):
+    if n%i==0:
+        new.append(i)
+print("Divisors of {} is {}".format(n,new))
+
+5.List OverLap
+	[write a program that returns a list that contains only the elements that are common between the lists (without duplicates).]
+sol:
+a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+new=[]
+for i in range(len(a)):
+    if a[i] in b:
+        if a[i] not in new:
+            new.append(a[i])
+print(new)
+
+6.Palindrom String
+	[Take  a string from user check whether it is palindrom or not]
+sol:
+s=input("enter a string :")
+s_rev=s[::-1]
+if s==s_rev:
+    print("{} is a palindrom string .".format(s))
+else:
+        print("{} is not a palindrom string .".format(s))
+
+7.List Comprehension
+	[Write one line of Python that takes this list a and makes a new list that has only the even elements of this list in it.]
+sol:
+a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+new=[i for i in a if i%2==0]
+print(new)
+
+8.Rock Paper Scissors (*not fully functional)
+
+sol:
+while(1):
+    n=input("If You want to continue the game Type YES else NO:")
+    n=n.upper()
+    if n=="NO":
+        break
+    else:
+        p1=input("Choose from Rock-Paper-Scissor :")
+        p2=input("Choose from Rock-Paper-Scissor :")
+        n=print("If You want to continue the game Type YES else NO:")
+        p1=p1.upper()
+        p2=p2.upper()
+        
+        if (p1=="ROCK" and p2=="SCISSOR") or (p1=="SCISSOR" and p2=="PAPER") or (p1=="PAPER" and p2=="ROCK"):
+            print("player1 Won")
+        else:
+            print("player2 won ")
+
+9.Guessing Game
+
+sol:
+import random
+n=random.randint(1,9)
+c=3
+while(c>0):
+    user=int(input("Guess the number you have {} chances left :".format(c)))
+    if user==n:
+        print("Congratulations !! You Won.")
+        break
+    elif user<n:
+        print("choice is below the answer,Try again !!")
+        c=c-1
+    elif user>n:
+        print("choice is above the answer,Try again !!")
+        c=c-1
+
+10.Prime or not
+
+sol:
+n=int(input("enter the number to check prime or not :"))
+count=0
+for i in range(2,n//2):
+    if n%i==0:
+        count+=1
+if count==0:
+    print("{} is a prime number .".format(n))
+else:
+    print("{} is not a prime number.".format(n))
+
+11.List Ends
+	[print the first and last element of a user entered list]
+
+sol:
+n=list(map(int,input("enter numbers for the list :").split()))
+new=[]
+x=len(n)-1
+new.append(n[0])
+new.append(n[x])
+print("The first and last element of the above list is {}".format(new))
+
+12.Fibonacci Series
+
+sol:
+n=int(input("enter how many fibonacci numbers u want :"))
+new=[0,1]
+x=0
+y=1
+for i in range(n-2):
+    z=x+y
+    new.append(z)
+    x=y
+    y=z
+print("Fibonacci series is {}".format(new))
+    
+13.List remove duplicates
+
+sol:
+n=list(map(int,input("enter elements for the list :").split()))
+new=[]
+for i in n:
+    if i not in new:
+        new.append(i)
+print("entered list was {}".format(n))
+print("List after removal of duplicate elements is {}".format(new))
+
+14.Reverse the Word
+
+sol:
+n=input("enter the string :")
+x=len(n.split(" "))-1
+new=""
+while(x>=0):
+    new+=(n.split(" ")[x])
+    new+=" "
+    x-=1
+print("original string is {}:".format(new))
+print("the string in  reverse order is {} :".format(new))
+
+15.Password Generator
+
+sol:
+import string
+import random
+var=string.ascii_letters
+#var3=var[:26] [all lower case]
+#var4=var[26:] [all upper case]
+sp="@#$%&*"
+nums="1234567890"
+total=var+sp+nums
+n=int(input("enter length of password u want :"))-1
+i=0
+pwd=""
+while(i<=n):
+    pwd+=random.choice(total)
+    i+=1
+print("Your password is {}".format(pwd))
